@@ -1,0 +1,121 @@
+body,
+p {
+  margin: 0%;
+  padding: 0%;
+}
+
+body,
+html {
+  height: 100%;
+}
+.title {
+  position: absolute;
+  font-size: 3rem;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin-left: 35px;
+}
+
+.timer {
+  position: absolute;
+  font-size: 3rem;
+  color: #fff;
+  top: 50px;
+  right: 50px;
+}
+
+.typingcontent {
+  font-size: 2rem;
+  color: #ede6db;
+  position: absolute;
+  margin-top: 20%;
+  margin-left: 2%;
+  opacity: 0.7;
+}
+
+.typedcontent {
+  font-size: 2rem;
+  color: #f6d860;
+  position: absolute;
+  margin-top: 20%;
+  margin-left: 2%;
+  border-right: 3px solid;
+  animation: blink 0.5s step-end infinite alternate;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.typingsection {
+  width: 100%;
+  height: 80%;
+  background-color: #1a3c40;
+}
+
+.footer {
+  width: 100%;
+  height: 20%;
+  background-color: #417d7a;
+}
+
+.develop {
+  position: absolute;
+  font-size: 1.5rem;
+  color: white;
+  bottom: 2%;
+  right: 2%;
+}
+
+.wordcount {
+  font-size: 2rem;
+  color: #ede6db;
+  position: absolute;
+  margin-top: 13%;
+  margin-left: 50%;
+}
+
+.btn {
+  height: 5em;
+  width: 5em;
+  border-radius: 3em;
+  margin-left: 2em;
+  margin-top: 2em;
+  background-color: #1a3c40;
+  color: aliceblue;
+}
+
+.eyes {
+  position: absolute;
+  top: 20%;
+  transform: translateY(-50%);
+  background-color: #1a3c40;
+  width: 100%;
+  text-align: center;
+}
+
+.eye {
+  width: 80px;
+  height: 40px;
+  background: #fff;
+  display: inline-block;
+  margin: 15px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.ball {
+  width: 15px;
+  height: 15px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 6px solid #333;
+}
