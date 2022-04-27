@@ -103,9 +103,8 @@ typingtext.innerHTML = String(dataText);
 document.addEventListener("keydown", function (e) {
   startTimer();
 
-  wordcount.innerHTML = i + 1 + "/" + length;
-
   if (e.key == dataText[i]) {
+    wordcount.innerHTML = i + 1 + "/" + length;
     typedlength++;
     i++;
 
