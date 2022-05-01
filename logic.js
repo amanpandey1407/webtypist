@@ -1,21 +1,122 @@
 "use strict";
 
-let textcontent = [
-  `Curiosity about life in all of its aspects I think is still the secret of great creative people`,
-  `Life is not a problem to be solved but a reality to be experienced`,
-  `Don't settle for what life gives you make life better and build something`,
-  `You never really learn much from hearing yourself speak`,
-  `Keep smiling because life is a beautiful thing and there's so much to smile about`,
-  `Health is the greatest gift contentment the greatest wealth faithfulness the best relationship`,
-  `The best way to predict your future is to create it`,
-  `There may be people who have more talent than you but there's no excuse for anyone to work harder than you do`,
-  `Be nice to people on the way up, because you may meet them on the way down`,
-  `All our dreams can come true, if we have the courage to pursue them`,
-  `Live as if you were to die tomorrow. Learn as if you were to live forever`,
-  `The more you praise and celebrate your life, the more there is in life to celebrate`,
-  `Our greatest glory consists not in never falling, but in rising every time we fall`,
-  `A successful man is one who can lay a firm foundation with the bricks others have thrown at him`,
+let randomwords = [
+  `you`,
+  `hear`,
+  `great`,
+  `answer`,
+  `come`,
+  `large`,
+  `does`,
+  `between`,
+  `family`,
+  `together`,
+  `like`,
+  `began`,
+  `near`,
+  `why`,
+  `run`,
+  `an`,
+  `me`,
+  `are`,
+  `group`,
+  `place`,
+  `a`,
+  `different`,
+  `plant`,
+  `want`,
+  `father`,
+  `would`,
+  `for`,
+  `first`,
+  `might`,
+  `over`,
+  `there`,
+  `took`,
+  `far`,
+  `only`,
+  `thought`,
+  `good`,
+  `below`,
+  `under`,
+  `put`,
+  `old`,
+  `live`,
+  `often`,
+  `food`,
+  `left`,
+  `year`,
+  `way`,
+  `paper`,
+  `around`,
+  `home`,
+  `such`,
+  `is`,
+  `many`,
+  `use`,
+  `to`,
+  `was`,
+  `him`,
+  `but`,
+  `out`,
+  `over`,
+  `great`,
+  `later`,
+  `up`,
+  `big`,
+  `city`,
+  `have`,
+  `into`,
+  `our`,
+  `as`,
+  `fall`,
+  `saw`,
+  `sometimes`,
+  `family`,
+  `hard`,
+  `before`,
+  `few`,
+  `very`,
+  `eye`,
+  `sun`,
+  `little`,
+  `hear`,
+  `some`,
+  `our`,
+  `high`,
+  `face`,
+  `next`,
+  `as`,
+  `set`,
+  `same`,
+  "here",
+  "what",
+  "now",
+  "health",
+  "is",
+  "the",
+  "greatest",
+  "gift",
+  "contentment",
+  "the",
+  "greatest",
+  "wealth",
+  "faithfulness",
+  "best",
+  "relationship",
 ];
+
+let textcontent = "",
+  sentencesize = 15;
+
+for (let i = 0; i < sentencesize - 1; i++) {
+  let tempword = randomwords[Math.floor(Math.random() * randomwords.length)];
+  textcontent = textcontent.concat(String(tempword + " "));
+}
+
+textcontent = textcontent.concat(
+  String(randomwords[Math.floor(Math.random() * randomwords.length)])
+);
 
 const timer = document.getElementById("stopwatch");
 
@@ -82,11 +183,7 @@ let i = 0,
   j = 0,
   word = 0;
 
-let rannum = Math.floor(Math.random() * textcontent.length);
-
-var dataText = textcontent[rannum];
-
-let length = dataText.length;
+let length = textcontent.length;
 
 let result = "",
   typed = "",
@@ -98,18 +195,18 @@ var wordcount = document.getElementById("wordcount");
 var reset = document.getElementById("resetbtn");
 var next = document.getElementById("nextbtn");
 
-typingtext.innerHTML = String(dataText);
+typingtext.innerHTML = String(textcontent);
 
 document.addEventListener("keydown", function (e) {
   startTimer();
 
-  if (e.key == dataText[i]) {
+  if (e.key == textcontent[i]) {
     wordcount.innerHTML = i + 1 + "/" + length;
     typedlength++;
     i++;
 
     while (j < typedlength) {
-      typed = typed.concat(String(dataText[j]));
+      typed = typed.concat(String(textcontent[j]));
       result = result.concat(String(typed));
       typed = "";
       typedtext.innerHTML = result;
