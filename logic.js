@@ -120,6 +120,8 @@ textcontent = textcontent.concat(
 
 const timer = document.getElementById("stopwatch");
 
+let watchon = true;
+
 var hr = 0;
 var min = 0;
 var sec = 0;
@@ -180,14 +182,14 @@ function resetTimer() {
 }
 
 let i = 0,
-  j = 0,
-  word = 0;
+  j = 0;
 
 let length = textcontent.length;
 
 let result = "",
   typed = "",
-  typedlength = 0;
+  typedlength = 0,
+  words = 0;
 
 var typingtext = document.getElementById("typingtext");
 var typedtext = document.getElementById("typedtext");
@@ -198,10 +200,14 @@ var next = document.getElementById("nextbtn");
 typingtext.innerHTML = String(textcontent);
 
 document.addEventListener("keydown", function (e) {
-  startTimer();
+  if (watchon == true) {
+    startTimer();
+  }
 
   if (e.key == textcontent[i]) {
-    wordcount.innerHTML = i + 1 + "/" + length;
+    wordcount.innerHTML = words + 1 + "/" + sentencesize;
+
+    if (e.key == " ") words++;
     typedlength++;
     i++;
 
@@ -216,6 +222,7 @@ document.addEventListener("keydown", function (e) {
 
   if (length == i) {
     stopTimer();
+    watchon = false;
     timer.style.color = "white";
     timer.style.fontSize = "50px";
     timer.style.backgroundColor = "#8e3200";
