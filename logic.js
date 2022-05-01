@@ -119,6 +119,9 @@ document.addEventListener("keydown", function (e) {
 
   if (length == i) {
     stopTimer();
+    timer.style.color = "white";
+    timer.style.fontSize = "50px";
+    timer.style.backgroundColor = "#8e3200";
   }
 });
 
