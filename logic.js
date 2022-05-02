@@ -99,8 +99,10 @@ let randomwords = [
   "best",
 ];
 
+let daytheme = true;
+
 let textcontent = "",
-  sentencesize = 40;
+  sentencesize = 10;
 
 for (let i = 0; i < sentencesize - 1; i++) {
   let tempword = randomwords[Math.floor(Math.random() * randomwords.length)];
@@ -187,8 +189,9 @@ let result = "",
 var typingtext = document.getElementById("typingtext");
 var typedtext = document.getElementById("typedtext");
 var wordcount = document.getElementById("wordcount");
-var reset = document.getElementById("resetbtn");
+var theme = document.getElementById("themechange");
 var next = document.getElementById("nextbtn");
+var footer = document.getElementsByClassName("footer");
 
 typingtext.innerHTML = String(textcontent);
 
@@ -216,9 +219,16 @@ document.addEventListener("keydown", function (e) {
   if (length == i) {
     stopTimer();
     watchon = false;
-    timer.style.color = "white";
-    timer.style.fontSize = "50px";
-    timer.style.backgroundColor = "#8e3200";
+
+    if (daytheme == true) {
+      timer.style.color = "white";
+      timer.style.fontSize = "50px";
+      timer.style.backgroundColor = "#8e3200";
+    } else {
+      timer.style.color = "black";
+      timer.style.fontSize = "50px";
+      timer.style.backgroundColor = "white";
+    }
   }
 });
 
@@ -238,3 +248,50 @@ document.onmousemove = function () {
     balls[q].style.transform = "translate(-" + x + ",-" + y + ")";
   }
 };
+
+function theme_day() {
+  document.getElementsByClassName("title")[0].style.color = "#8e3200";
+  document.getElementsByClassName("timer")[0].style.color = "#8e3200";
+  document.getElementsByClassName("typingsection")[0].style.backgroundColor =
+    "#d7a86e";
+  document.getElementsByClassName("eyes")[0].style.backgroundColor = "#d7a86e";
+  document.querySelectorAll(".btn").forEach((btn) => {
+    btn.style.backgroundColor = "#d7a86e";
+    btn.style.color = "white";
+  });
+
+  document.getElementsByClassName("btn")[1].innerHTML = "Day";
+
+  typedtext.style.color = "#8e3200";
+  typingtext.style.color = "white";
+  footer[0].style.backgroundColor = "#a64b2a";
+}
+
+function theme_night() {
+  document.getElementsByClassName("title")[0].style.color = "white";
+  document.getElementsByClassName("timer")[0].style.color = "white";
+  document.getElementsByClassName("typingsection")[0].style.backgroundColor =
+    "#041C32";
+  document.getElementsByClassName("eyes")[0].style.backgroundColor = "#041C32";
+
+  document.querySelectorAll(".btn").forEach((btn) => {
+    btn.style.backgroundColor = "white";
+    btn.style.color = "black";
+  });
+
+  document.getElementsByClassName("btn")[1].innerHTML = "Night";
+
+  typedtext.style.color = "#ECB365";
+  typingtext.style.color = "white";
+  footer[0].style.backgroundColor = "#04293A";
+}
+
+theme.addEventListener("click", function () {
+  if (daytheme == false) {
+    theme_day();
+    daytheme = true;
+  } else {
+    theme_night();
+    daytheme = false;
+  }
+});
