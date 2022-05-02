@@ -24,12 +24,21 @@ html {
   right: 50px;
 }
 
+.playground {
+  width: 50%;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
 .typingcontent {
   font-size: 2rem;
   color: #fff;
   position: absolute;
-  margin-top: 20%;
-  margin-left: 2%;
+  /* margin-top: 20%;
+  margin-left: 2%; */
   opacity: 0.7;
   font-weight: 400;
 }
@@ -38,10 +47,10 @@ html {
   font-size: 2rem;
   color: #8e3200;
   position: absolute;
-  margin-top: 20%;
-  margin-left: 2%;
-  border-right: 3px solid;
-  animation: blink 0.5s step-end infinite alternate;
+  /* margin-top: 20%;
+  margin-left: 2%; */
+  /* border-right: 3px solid;
+  animation: blink 0.5s step-end infinite alternate; */
   font-weight: 400;
 }
 

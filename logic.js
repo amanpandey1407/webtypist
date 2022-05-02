@@ -9,7 +9,6 @@ let randomwords = [
   `large`,
   `does`,
   `between`,
-  `family`,
   `together`,
   `like`,
   `began`,
@@ -30,7 +29,6 @@ let randomwords = [
   `for`,
   `first`,
   `might`,
-  `over`,
   `there`,
   `took`,
   `far`,
@@ -60,7 +58,6 @@ let randomwords = [
   `but`,
   `out`,
   `over`,
-  `great`,
   `later`,
   `up`,
   `big`,
@@ -80,7 +77,6 @@ let randomwords = [
   `eye`,
   `sun`,
   `little`,
-  `hear`,
   `some`,
   `our`,
   `high`,
@@ -98,16 +94,13 @@ let randomwords = [
   "greatest",
   "gift",
   "contentment",
-  "the",
-  "greatest",
   "wealth",
   "faithfulness",
   "best",
-  "relationship",
 ];
 
 let textcontent = "",
-  sentencesize = 15;
+  sentencesize = 40;
 
 for (let i = 0; i < sentencesize - 1; i++) {
   let tempword = randomwords[Math.floor(Math.random() * randomwords.length)];
