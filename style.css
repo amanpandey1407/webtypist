@@ -37,12 +37,14 @@ html {
   /* margin-top: 20%;
   margin-left: 2%; */
   opacity: 0.7;
-  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
 }
 
 .typedcontent {
   font-size: 2rem;
   position: absolute;
+  font-family: "Roboto", sans-serif;
   /* margin-top: 20%;
   margin-left: 2%; */
   /* border-right: 3px solid;
@@ -72,6 +74,7 @@ html {
   color: white;
   bottom: 2%;
   right: 2%;
+  font-weight: 500;
 }
 
 .wordcount {

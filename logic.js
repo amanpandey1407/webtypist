@@ -262,21 +262,21 @@ document.onmousemove = function () {
 };
 
 function theme_day() {
-  document.getElementsByClassName("title")[0].style.color = "#8e3200";
-  document.getElementsByClassName("timer")[0].style.color = "#8e3200";
+  document.getElementsByClassName("title")[0].style.color = "#F4F6FF";
+  document.getElementsByClassName("timer")[0].style.color = "#F4F6FF";
   document.getElementsByClassName("typingsection")[0].style.backgroundColor =
-    "#d7a86e";
-  document.getElementsByClassName("eyes")[0].style.backgroundColor = "#d7a86e";
+    "#4F8A8B";
+  document.getElementsByClassName("eyes")[0].style.backgroundColor = "#4F8A8B";
   document.querySelectorAll(".btn").forEach((btn) => {
-    btn.style.backgroundColor = "#d7a86e";
-    btn.style.color = "white";
+    btn.style.backgroundColor = "#F4F6FF";
+    btn.style.color = "black";
   });
 
   document.getElementsByClassName("btn")[1].innerHTML = "Day";
 
-  typedtext.style.color = "#8e3200";
-  typingtext.style.color = "white";
-  footer[0].style.backgroundColor = "#a64b2a";
+  typedtext.style.color = "#FBD46D";
+  typingtext.style.color = "#FDEFF4";
+  footer[0].style.backgroundColor = "#07031A";
 }
 
 function theme_night() {
