@@ -95,7 +95,10 @@ let randomwords = [
   "best",
 ];
 
-let daytheme = true;
+let daytheme;
+var x = localStorage.getItem("theme");
+if (x == "day") daytheme = true;
+else daytheme = false;
 
 let textcontent = "",
   sentencesize = 40;
@@ -291,10 +294,13 @@ theme.addEventListener("click", function () {
   if (daytheme == false) {
     theme_day();
     daytheme = true;
+    localStorage.setItem("theme", "day");
   } else {
     theme_night();
     daytheme = false;
+    localStorage.setItem("theme", "night");
   }
 });
 
-theme_day();
+if (daytheme == true) theme_day();
+else theme_night();
