@@ -102,7 +102,7 @@ let randomwords = [
 let daytheme = true;
 
 let textcontent = "",
-  sentencesize = 10;
+  sentencesize = 40;
 
 for (let i = 0; i < sentencesize - 1; i++) {
   let tempword = randomwords[Math.floor(Math.random() * randomwords.length)];
@@ -295,3 +295,5 @@ theme.addEventListener("click", function () {
     daytheme = false;
   }
 });
+
+theme_day();
