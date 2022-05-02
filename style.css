@@ -8,18 +8,27 @@ body,
 html {
   height: 100%;
 }
+
+.header {
+  width: 100%;
+  height: 15%;
+}
 .title {
-  position: absolute;
   font-size: 3rem;
   font-family: "Water Brush", cursive;
-  margin-left: 35px;
+  margin: 0%;
+  width: 30%;
+  height: 100%;
+  display: inline-block;
+  text-align: center;
 }
 
 .timer {
-  position: absolute;
   font-size: 3rem;
-  top: 50px;
-  right: 50px;
+  width: 30%;
+  display: inline-block;
+  height: 100%;
+  text-align: center;
 }
 
 .playground {
@@ -60,12 +69,12 @@ html {
 
 .typingsection {
   width: 100%;
-  height: 90%;
+  height: 70%;
 }
 
 .footer {
   width: 100%;
-  height: 10%;
+  height: 15%;
 }
 
 .develop {
@@ -90,26 +99,25 @@ html {
   width: 5em;
   border-radius: 3em;
   margin-left: 2em;
-  margin-top: 2px;
+  margin-top: 1%;
 }
 
 .eyes {
-  position: absolute;
-  top: 20%;
-  transform: translateY(-50%);
-  width: 100%;
+  transform: translateY(-7%);
+  height: 100%;
+  width: 39%;
   text-align: center;
+  display: inline-block;
 }
 
 .eye {
+  margin-top: 5%;
   width: 80px;
   height: 40px;
   background: #fff;
   display: inline-block;
-  margin: 15px;
   border-radius: 50%;
   position: relative;
-  overflow: hidden;
 }
 
 .ball {

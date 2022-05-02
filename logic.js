@@ -247,6 +247,7 @@ next.addEventListener("click", function () {
   sentencegeneration();
   wordcount.innerHTML = 0;
   typingtext.innerHTML = String(textcontent);
+  resetTimer();
 });
 
 var balls = document.getElementsByClassName("ball");
@@ -262,6 +263,8 @@ document.onmousemove = function () {
 };
 
 function theme_day() {
+  document.getElementsByClassName("header")[0].style.backgroundColor =
+    "#4F8A8B";
   document.getElementsByClassName("title")[0].style.color = "#F4F6FF";
   document.getElementsByClassName("timer")[0].style.color = "#F4F6FF";
   document.getElementsByClassName("typingsection")[0].style.backgroundColor =
@@ -280,11 +283,13 @@ function theme_day() {
 }
 
 function theme_night() {
+  document.getElementsByClassName("header")[0].style.backgroundColor =
+    "#041C32";
   document.getElementsByClassName("title")[0].style.color = "white";
   document.getElementsByClassName("timer")[0].style.color = "white";
   document.getElementsByClassName("typingsection")[0].style.backgroundColor =
     "#041C32";
-  document.getElementsByClassName("eyes")[0].style.backgroundColor = "#041C32";
+  document.getElementsByClassName("eyes")[0].style.backgroundColor = "#041c32";
 
   document.querySelectorAll(".btn").forEach((btn) => {
     btn.style.backgroundColor = "white";
