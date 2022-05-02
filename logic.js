@@ -21,7 +21,6 @@ let randomwords = [
   `group`,
   `place`,
   `a`,
-  `different`,
   `plant`,
   `want`,
   `father`,
@@ -68,7 +67,6 @@ let randomwords = [
   `as`,
   `fall`,
   `saw`,
-  `sometimes`,
   `family`,
   `hard`,
   `before`,
@@ -93,9 +91,7 @@ let randomwords = [
   "the",
   "greatest",
   "gift",
-  "contentment",
   "wealth",
-  "faithfulness",
   "best",
 ];
 
@@ -104,14 +100,18 @@ let daytheme = true;
 let textcontent = "",
   sentencesize = 40;
 
-for (let i = 0; i < sentencesize - 1; i++) {
-  let tempword = randomwords[Math.floor(Math.random() * randomwords.length)];
-  textcontent = textcontent.concat(String(tempword + " "));
+function sentencegeneration() {
+  for (let i = 0; i < sentencesize - 1; i++) {
+    let tempword = randomwords[Math.floor(Math.random() * randomwords.length)];
+    textcontent = textcontent.concat(String(tempword + " "));
+  }
+
+  textcontent = textcontent.concat(
+    String(randomwords[Math.floor(Math.random() * randomwords.length)])
+  );
 }
 
-textcontent = textcontent.concat(
-  String(randomwords[Math.floor(Math.random() * randomwords.length)])
-);
+sentencegeneration();
 
 const timer = document.getElementById("stopwatch");
 
@@ -233,8 +233,9 @@ document.addEventListener("keydown", function (e) {
 });
 
 next.addEventListener("click", function () {
-  location.reload();
-  location.reload();
+  textcontent = "";
+  sentencegeneration();
+  typingtext.innerHTML = String(textcontent);
 });
 
 var balls = document.getElementsByClassName("ball");
