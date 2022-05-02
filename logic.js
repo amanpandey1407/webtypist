@@ -101,7 +101,7 @@ if (x == "day") daytheme = true;
 else daytheme = false;
 
 let textcontent = "",
-  sentencesize = 40;
+  sentencesize = 35;
 
 function sentencegeneration() {
   for (let i = 0; i < sentencesize - 1; i++) {
@@ -187,7 +187,8 @@ let length = textcontent.length;
 let result = "",
   typed = "",
   typedlength = 0,
-  words = 0;
+  words = 0,
+  completed = false;
 
 var typingtext = document.getElementById("typingtext");
 var typedtext = document.getElementById("typedtext");
@@ -222,16 +223,11 @@ document.addEventListener("keydown", function (e) {
   if (length == i) {
     stopTimer();
     watchon = false;
+    completed = true;
 
-    if (daytheme == true) {
-      timer.style.color = "white";
-      timer.style.fontSize = "50px";
-      timer.style.backgroundColor = "#8e3200";
-    } else {
-      timer.style.color = "black";
-      timer.style.fontSize = "50px";
-      timer.style.backgroundColor = "white";
-    }
+    timer.style.color = "black";
+    timer.style.fontSize = "50px";
+    timer.style.backgroundColor = "white";
   }
 });
 
@@ -248,6 +244,11 @@ next.addEventListener("click", function () {
   wordcount.innerHTML = 0;
   typingtext.innerHTML = String(textcontent);
   resetTimer();
+  completed = false;
+  timer.style.color = "white";
+  if (daytheme == true) timer.style.backgroundColor = "#4F8A8B";
+  else timer.style.backgroundColor = "#041C32";
+  watchon = true;
 });
 
 var balls = document.getElementsByClassName("ball");
@@ -280,6 +281,11 @@ function theme_day() {
   typedtext.style.color = "#FBD46D";
   typingtext.style.color = "#FDEFF4";
   footer[0].style.backgroundColor = "#07031A";
+
+  if (completed == true) {
+    timer.style.color = "black";
+    timer.style.backgroundColor = "#white";
+  }
 }
 
 function theme_night() {
@@ -301,6 +307,11 @@ function theme_night() {
   typedtext.style.color = "#ECB365";
   typingtext.style.color = "white";
   footer[0].style.backgroundColor = "#04293A";
+
+  if (completed == true) {
+    timer.style.color = "black";
+    timer.style.backgroundColor = "white";
+  }
 }
 
 theme.addEventListener("click", function () {
