@@ -58,12 +58,12 @@ html {
 
 .typingsection {
   width: 100%;
-  height: 80%;
+  height: 90%;
 }
 
 .footer {
   width: 100%;
-  height: 20%;
+  height: 10%;
 }
 
 .develop {
@@ -87,7 +87,7 @@ html {
   width: 5em;
   border-radius: 3em;
   margin-left: 2em;
-  margin-top: 2em;
+  margin-top: 2px;
 }
 
 .eyes {
