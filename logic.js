@@ -236,8 +236,16 @@ document.addEventListener("keydown", function (e) {
 });
 
 next.addEventListener("click", function () {
-  textcontent = "";
+  (textcontent = ""),
+    (result = ""),
+    (typed = ""),
+    (typedlength = 0),
+    (i = 0),
+    (j = 0);
+  words = 0;
+  typedtext.innerHTML = "";
   sentencegeneration();
+  wordcount.innerHTML = 0;
   typingtext.innerHTML = String(textcontent);
 });
 
