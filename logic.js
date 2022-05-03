@@ -198,6 +198,7 @@ var next = document.getElementById("nextbtn");
 var footer = document.getElementsByClassName("footer");
 var cursor = document.createElement("SPAN");
 cursor.classList.add("cursorstyle");
+typedtext.append(cursor);
 
 typingtext.innerHTML = String(textcontent);
 
