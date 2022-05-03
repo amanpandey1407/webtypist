@@ -101,7 +101,7 @@ if (x == "day") daytheme = true;
 else daytheme = false;
 
 let textcontent = "",
-  sentencesize = 35;
+  sentencesize = 40;
 
 function sentencegeneration() {
   for (let i = 0; i < sentencesize - 1; i++) {
@@ -220,6 +220,8 @@ document.addEventListener("keydown", function (e) {
     }
   }
 
+  console.log(length, i);
+
   if (length == i) {
     stopTimer();
     watchon = false;
@@ -242,7 +244,7 @@ next.addEventListener("click", function () {
   typedtext.innerHTML = "";
   sentencegeneration();
   wordcount.innerHTML = 0;
-  typingtext.innerHTML = String(textcontent);
+  (length = textcontent.length), (typingtext.innerHTML = String(textcontent));
   resetTimer();
   completed = false;
   timer.style.color = "white";
@@ -281,10 +283,11 @@ function theme_day() {
   typedtext.style.color = "#FBD46D";
   typingtext.style.color = "#FDEFF4";
   footer[0].style.backgroundColor = "#07031A";
+  timer.style.backgroundColor = "#4F8A8B";
 
   if (completed == true) {
     timer.style.color = "black";
-    timer.style.backgroundColor = "#white";
+    timer.style.backgroundColor = "white";
   }
 }
 
@@ -307,6 +310,7 @@ function theme_night() {
   typedtext.style.color = "#ECB365";
   typingtext.style.color = "white";
   footer[0].style.backgroundColor = "#04293A";
+  timer.style.backgroundColor = "#041C32";
 
   if (completed == true) {
     timer.style.color = "black";
