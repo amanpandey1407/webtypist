@@ -253,6 +253,7 @@ next.addEventListener("click", function () {
   if (daytheme == true) timer.style.backgroundColor = "#4F8A8B";
   else timer.style.backgroundColor = "#041C32";
   watchon = true;
+  typedtext.append(cursor);
 });
 
 var balls = document.getElementsByClassName("ball");
