@@ -101,7 +101,7 @@ if (x == "day") daytheme = true;
 else daytheme = false;
 
 let textcontent = "",
-  sentencesize = 40;
+  sentencesize = 30;
 
 function sentencegeneration() {
   for (let i = 0; i < sentencesize - 1; i++) {
@@ -196,6 +196,8 @@ var wordcount = document.getElementById("wordcount");
 var theme = document.getElementById("themechange");
 var next = document.getElementById("nextbtn");
 var footer = document.getElementsByClassName("footer");
+var cursor = document.createElement("SPAN");
+cursor.classList.add("cursorstyle");
 
 typingtext.innerHTML = String(textcontent);
 
@@ -216,11 +218,10 @@ document.addEventListener("keydown", function (e) {
       result = result.concat(String(typed));
       typed = "";
       typedtext.innerHTML = result;
+      typedtext.append(cursor);
       j++;
     }
   }
-
-  console.log(length, i);
 
   if (length == i) {
     stopTimer();
