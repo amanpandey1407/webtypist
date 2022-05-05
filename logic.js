@@ -106,7 +106,7 @@ if (x == "day") daytheme = true;
 else daytheme = false;
 
 let textcontent = "",
-  sentencesize = 30;
+  sentencesize = 10;
 
 function sentencegeneration() {
   for (let i = 0; i < sentencesize - 1; i++) {
@@ -241,7 +241,7 @@ document.addEventListener("keydown", function (e) {
     timer.style.fontSize = "50px";
     timer.style.backgroundColor = "white";
     displayresult.classList.remove("hidden");
-    currentrecord = Math.floor(i / 5 / (sec / 60));
+    currentrecord = Math.floor(i / 5 / (min * 60 + sec / 60));
     speeddisplay.innerHTML = "Your Speed was " + currentrecord;
 
     if (currentrecord > highestrecord) {
