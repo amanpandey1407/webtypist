@@ -97,12 +97,13 @@ let randomwords = [
 
 let daytheme,
   highestrecord = parseInt(localStorage.getItem("highest"));
+if ((highestrecord = NaN)) highestrecord = 0;
 var x = localStorage.getItem("theme");
 if (x == "day") daytheme = true;
 else daytheme = false;
 
 let textcontent = "",
-  sentencesize = 5;
+  sentencesize = 30;
 
 function sentencegeneration() {
   for (let i = 0; i < sentencesize - 1; i++) {
