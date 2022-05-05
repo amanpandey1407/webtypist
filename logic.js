@@ -95,13 +95,14 @@ let randomwords = [
   "best",
 ];
 
-let daytheme;
+let daytheme,
+  highestrecord = parseInt(localStorage.getItem("highest"));
 var x = localStorage.getItem("theme");
 if (x == "day") daytheme = true;
 else daytheme = false;
 
 let textcontent = "",
-  sentencesize = 30;
+  sentencesize = 5;
 
 function sentencegeneration() {
   for (let i = 0; i < sentencesize - 1; i++) {
@@ -188,14 +189,18 @@ let result = "",
   typed = "",
   typedlength = 0,
   words = 0,
-  completed = false;
-
+  completed = false,
+  speed = 0,
+  currentrecord = 0;
 var typingtext = document.getElementById("typingtext");
 var typedtext = document.getElementById("typedtext");
 var wordcount = document.getElementById("wordcount");
 var theme = document.getElementById("themechange");
 var next = document.getElementById("nextbtn");
 var footer = document.getElementsByClassName("footer");
+var displayresult = document.getElementById("displayresult");
+var speeddisplay = document.getElementById("speed");
+var recorddisplay = document.getElementById("highestrecord");
 var cursor = document.createElement("SPAN");
 cursor.classList.add("cursorstyle");
 typedtext.append(cursor);
@@ -228,10 +233,19 @@ document.addEventListener("keydown", function (e) {
     stopTimer();
     watchon = false;
     completed = true;
-
     timer.style.color = "black";
     timer.style.fontSize = "50px";
     timer.style.backgroundColor = "white";
+    displayresult.classList.remove("hidden");
+    currentrecord = Math.floor(i / 5 / (sec / 60));
+    speeddisplay.innerHTML = "Your Speed was " + currentrecord;
+
+    if (currentrecord > highestrecord) {
+      highestrecord = currentrecord;
+      localStorage.setItem("highest", highestrecord);
+    }
+
+    recorddisplay.innerHTML = "Highest Record is " + highestrecord;
   }
 });
 
@@ -254,6 +268,7 @@ next.addEventListener("click", function () {
   else timer.style.backgroundColor = "#041C32";
   watchon = true;
   typedtext.append(cursor);
+  displayresult.classList.add("hidden");
 });
 
 var balls = document.getElementsByClassName("ball");

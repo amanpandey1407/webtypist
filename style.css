@@ -138,3 +138,34 @@ html {
   border-radius: 50%;
   border: 6px solid #333;
 }
+
+.displayresult {
+  background-color: #ff8c32;
+  position: absolute;
+  z-index: 2;
+  width: 60%;
+  height: 50%;
+  margin-left: 20%;
+  margin-top: 10%;
+  border-radius: 4%;
+  text-align: center;
+
+  animation: stoe 3s infinite alternate;
+}
+
+@keyframes stoe {
+  from {
+    background-color: #56bbf1;
+  }
+  to {
+    background-color: #00afc1;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.resulttext {
+  color: white;
+}
