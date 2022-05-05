@@ -95,15 +95,18 @@ let randomwords = [
   "best",
 ];
 
+if (localStorage.getItem("highest") === null) {
+  localStorage.setItem("highest", 0);
+}
+
 let daytheme,
   highestrecord = parseInt(localStorage.getItem("highest"));
-if (highestrecord == "NaN") highestrecord = 0;
 var x = localStorage.getItem("theme");
 if (x == "day") daytheme = true;
 else daytheme = false;
 
 let textcontent = "",
-  sentencesize = 30;
+  sentencesize = 5;
 
 function sentencegeneration() {
   for (let i = 0; i < sentencesize - 1; i++) {
@@ -240,6 +243,7 @@ document.addEventListener("keydown", function (e) {
     displayresult.classList.remove("hidden");
     currentrecord = Math.floor(i / 5 / (sec / 60));
     speeddisplay.innerHTML = "Your Speed was " + currentrecord;
+
     if (currentrecord > highestrecord) {
       highestrecord = currentrecord;
       localStorage.setItem("highest", highestrecord);
