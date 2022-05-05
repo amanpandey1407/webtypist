@@ -106,7 +106,7 @@ if (x == "day") daytheme = true;
 else daytheme = false;
 
 let textcontent = "",
-  sentencesize = 5;
+  sentencesize = 30;
 
 function sentencegeneration() {
   for (let i = 0; i < sentencesize - 1; i++) {
