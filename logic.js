@@ -273,6 +273,7 @@ next.addEventListener("click", function () {
   watchon = true;
   typedtext.append(cursor);
   displayresult.classList.add("hidden");
+  next.blur();
 });
 
 var balls = document.getElementsByClassName("ball");
@@ -301,6 +302,7 @@ function theme_day() {
   });
 
   document.getElementsByClassName("btn")[1].innerHTML = "Day";
+  document.getElementsByClassName("btn")[1].blur();
 
   typedtext.style.color = "#FBD46D";
   typingtext.style.color = "#FDEFF4";
@@ -328,7 +330,7 @@ function theme_night() {
   });
 
   document.getElementsByClassName("btn")[1].innerHTML = "Night";
-
+  document.getElementsByClassName("btn")[1].blur();
   typedtext.style.color = "#ECB365";
   typingtext.style.color = "white";
   footer[0].style.backgroundColor = "#04293A";
