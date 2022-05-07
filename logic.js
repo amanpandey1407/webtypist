@@ -106,7 +106,7 @@ if (x == "day") daytheme = true;
 else daytheme = false;
 
 let textcontent = "",
-  sentencesize = 25;
+  sentencesize = 5;
 
 function sentencegeneration() {
   for (let i = 0; i < sentencesize - 1; i++) {
@@ -195,9 +195,12 @@ let result = "",
   words = 0,
   completed = false,
   speed = 0,
-  currentrecord = 0;
+  currentrecord = 0,
+  correctword = 0,
+  errorword = 0,
+  errorchar = 0,
+  error = 0;
 var typingtext = document.getElementById("typingtext");
-var typedtext = document.getElementById("typedtext");
 var wordcount = document.getElementById("wordcount");
 var theme = document.getElementById("themechange");
 var next = document.getElementById("nextbtn");
@@ -206,32 +209,46 @@ var displayresult = document.getElementById("displayresult");
 var speeddisplay = document.getElementById("speed");
 var recorddisplay = document.getElementById("highestrecord");
 var cursor = document.createElement("SPAN");
+var typecontent = document.querySelector(".typecontent");
 cursor.classList.add("cursorstyle");
-typedtext.append(cursor);
-
 typingtext.innerHTML = String(textcontent);
 
 document.addEventListener("keydown", function (e) {
+  console.log(words, sentencesize);
+
   if (watchon == true) {
     startTimer();
   }
 
-  if (e.key == textcontent[i]) {
-    wordcount.innerHTML = words + 1 + "/" + sentencesize;
+  if (e.key == " ") {
+    words++;
 
-    if (e.key == " ") words++;
-    typedlength++;
-    i++;
+    if (error == 0) correctword++;
+    else errorword++;
 
-    while (j < typedlength) {
-      typed = typed.concat(String(textcontent[j]));
-      result = result.concat(String(typed));
-      typed = "";
-      typedtext.innerHTML = result;
-      typedtext.append(cursor);
-      j++;
-    }
+    error = 0;
   }
+  wordcount.innerHTML = words + 1 + "/" + sentencesize;
+
+  if (e.key == textcontent[i]) {
+    let x = document.createElement("p");
+    var t = document.createTextNode(e.key);
+    x.appendChild(t);
+    x.classList.add("correctletter");
+    typecontent.appendChild(x);
+    j++;
+  } else {
+    error++, errorchar++;
+    let x = document.createElement("p");
+    var t = document.createTextNode(textcontent[i]);
+    x.appendChild(t);
+    x.classList.add("wrongletter");
+    typecontent.appendChild(x);
+    j++;
+  }
+
+  i++;
+  typedlength++;
 
   if (length == i) {
     stopTimer();
@@ -241,8 +258,10 @@ document.addEventListener("keydown", function (e) {
     timer.style.fontSize = "50px";
     timer.style.backgroundColor = "white";
     displayresult.classList.remove("hidden");
-    currentrecord = Math.floor(i / 5 / (min * 60 + sec / 60));
-    speeddisplay.innerHTML = "Your Speed was " + currentrecord;
+    console.log(errorchar);
+    currentrecord = Math.floor(i / 5 / Number((min * 60 + sec) / 60));
+    currentrecord < 0 ? (currentrecord = 0) : "";
+    speeddisplay.innerHTML = "Your Net Speed was " + currentrecord;
 
     if (currentrecord > highestrecord) {
       highestrecord = currentrecord;
@@ -261,7 +280,8 @@ next.addEventListener("click", function () {
     (i = 0),
     (j = 0);
   words = 0;
-  typedtext.innerHTML = "";
+  error = 0;
+  errorchar = 0;
   sentencegeneration();
   wordcount.innerHTML = 0;
   (length = textcontent.length), (typingtext.innerHTML = String(textcontent));
@@ -271,8 +291,8 @@ next.addEventListener("click", function () {
   if (daytheme == true) timer.style.backgroundColor = "#4F8A8B";
   else timer.style.backgroundColor = "#041C32";
   watchon = true;
-  typedtext.append(cursor);
   displayresult.classList.add("hidden");
+  typecontent.replaceChildren();
   next.blur();
 });
 
@@ -303,8 +323,6 @@ function theme_day() {
 
   document.getElementsByClassName("btn")[1].innerHTML = "Day";
   document.getElementsByClassName("btn")[1].blur();
-
-  typedtext.style.color = "#FBD46D";
   typingtext.style.color = "#FDEFF4";
   footer[0].style.backgroundColor = "#07031A";
   timer.style.backgroundColor = "#4F8A8B";
@@ -331,7 +349,6 @@ function theme_night() {
 
   document.getElementsByClassName("btn")[1].innerHTML = "Night";
   document.getElementsByClassName("btn")[1].blur();
-  typedtext.style.color = "#ECB365";
   typingtext.style.color = "white";
   footer[0].style.backgroundColor = "#04293A";
   timer.style.backgroundColor = "#041C32";

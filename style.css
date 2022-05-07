@@ -50,16 +50,6 @@ html {
   font-weight: 300;
 }
 
-.typedcontent {
-  font-size: 2rem;
-  position: absolute;
-  font-family: "Roboto", sans-serif;
-  /* margin-top: 20%;
-  margin-left: 2%; */
-
-  font-weight: 400;
-}
-
 .cursorstyle {
   color: aliceblue;
   height: 10%;
@@ -142,7 +132,7 @@ html {
 .displayresult {
   background-color: #ff8c32;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   width: 60%;
   height: 50%;
   margin-left: 20%;
@@ -168,4 +158,27 @@ html {
 
 .resulttext {
   color: white;
+}
+
+.correctletter {
+  z-index: 2;
+  font-size: 2rem;
+  color: #fbd46d;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  display: inline;
+}
+
+.wrongletter {
+  z-index: 2;
+  font-size: 2rem;
+  color: #b20600;
+  font-family: "Roboto", sans-serif;
+  font-weight: 1000;
+  display: inline;
+}
+
+.typecontent {
+  position: absolute;
+  z-index: 2;
 }
