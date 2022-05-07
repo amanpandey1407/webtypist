@@ -106,7 +106,7 @@ if (x == "day") daytheme = true;
 else daytheme = false;
 
 let textcontent = "",
-  sentencesize = 5;
+  sentencesize = 30;
 
 function sentencegeneration() {
   for (let i = 0; i < sentencesize - 1; i++) {
@@ -214,20 +214,17 @@ cursor.classList.add("cursorstyle");
 typingtext.innerHTML = String(textcontent);
 
 document.addEventListener("keydown", function (e) {
-  console.log(words, sentencesize);
-
   if (watchon == true) {
     startTimer();
   }
 
-  if (e.key == " ") {
+  if (textcontent[i] == " ") {
     words++;
-
     if (error == 0) correctword++;
     else errorword++;
-
     error = 0;
   }
+
   wordcount.innerHTML = words + 1 + "/" + sentencesize;
 
   if (e.key == textcontent[i]) {
@@ -258,7 +255,6 @@ document.addEventListener("keydown", function (e) {
     timer.style.fontSize = "50px";
     timer.style.backgroundColor = "white";
     displayresult.classList.remove("hidden");
-    console.log(errorchar);
     currentrecord = Math.floor(i / 5 / Number((min * 60 + sec) / 60));
     currentrecord < 0 ? (currentrecord = 0) : "";
     speeddisplay.innerHTML = "Your Net Speed was " + currentrecord;
