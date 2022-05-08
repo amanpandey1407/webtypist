@@ -118,7 +118,6 @@ sentencegeneration();
 const timer = document.getElementById("stopwatch");
 
 let watchon = true;
-
 var hr = 0;
 var min = 0;
 var sec = 0;
@@ -193,6 +192,7 @@ let result = "",
   correctword = 0,
   errorword = 0,
   errorchar = 0,
+  typingon = true,
   error = 0;
 var typingtext = document.getElementById("typingtext");
 var wordcount = document.getElementById("wordcount");
@@ -208,57 +208,61 @@ cursor.classList.add("cursorstyle");
 typingtext.innerHTML = String(textcontent);
 
 document.addEventListener("keydown", function (e) {
-  if (watchon == true) {
-    startTimer();
-  }
-
-  if (textcontent[i] == " ") {
-    words++;
-    if (error == 0) correctword++;
-    else errorword++;
-    error = 0;
-  }
-
-  wordcount.innerHTML = words + 1 + "/" + sentencesize;
-
-  if (e.key == textcontent[i]) {
-    let x = document.createElement("p");
-    var t = document.createTextNode(e.key);
-    x.appendChild(t);
-    x.classList.add("correctletter");
-    typecontent.appendChild(x);
-    j++;
-  } else {
-    error++, errorchar++;
-    let x = document.createElement("p");
-    var t = document.createTextNode(textcontent[i]);
-    x.appendChild(t);
-    x.classList.add("wrongletter");
-    typecontent.appendChild(x);
-    j++;
-  }
-
-  i++;
-  typedlength++;
-
-  if (length == i) {
-    stopTimer();
-    watchon = false;
-    completed = true;
-    timer.style.color = "black";
-    timer.style.fontSize = "50px";
-    timer.style.backgroundColor = "white";
-    displayresult.classList.remove("hidden");
-    currentrecord = Math.floor(i / 5 / Number((min * 60 + sec) / 60));
-    currentrecord < 0 ? (currentrecord = 0) : "";
-    speeddisplay.innerHTML = "Your Net Speed was " + currentrecord;
-
-    if (currentrecord > highestrecord) {
-      highestrecord = currentrecord;
-      localStorage.setItem("highest", highestrecord);
+  if (typingon == true) {
+    if (watchon == true) {
+      startTimer();
     }
 
-    recorddisplay.innerHTML = "Highest Record is " + highestrecord;
+    if (textcontent[i] == " ") {
+      words++;
+      if (error == 0) correctword++;
+      else errorword++;
+      error = 0;
+    }
+
+    wordcount.innerHTML = words + 1 + "/" + sentencesize;
+
+    if (e.key == textcontent[i]) {
+      let x = document.createElement("p");
+      var t = document.createTextNode(e.key);
+      x.appendChild(t);
+      x.classList.add("correctletter");
+      typecontent.appendChild(x);
+      j++;
+    } else {
+      error++, errorchar++;
+      let x = document.createElement("p");
+      var t = document.createTextNode(textcontent[i]);
+      x.appendChild(t);
+      x.classList.add("wrongletter");
+      typecontent.appendChild(x);
+      j++;
+    }
+
+    typecontent.appendChild(cursor);
+    i++;
+    typedlength++;
+
+    if (length == i) {
+      stopTimer();
+      watchon = false;
+      typingon = false;
+      completed = true;
+      timer.style.color = "black";
+      timer.style.fontSize = "50px";
+      timer.style.backgroundColor = "white";
+      displayresult.classList.remove("hidden");
+      currentrecord = Math.floor(i / 5 / Number((min * 60 + sec) / 60));
+      currentrecord < 0 ? (currentrecord = 0) : "";
+      speeddisplay.innerHTML = "Your Net Speed was " + currentrecord;
+
+      if (currentrecord > highestrecord) {
+        highestrecord = currentrecord;
+        localStorage.setItem("highest", highestrecord);
+      }
+
+      recorddisplay.innerHTML = "Highest Record is " + highestrecord;
+    }
   }
 });
 
@@ -281,6 +285,7 @@ next.addEventListener("click", function () {
   if (daytheme == true) timer.style.backgroundColor = "#4F8A8B";
   else timer.style.backgroundColor = "#041C32";
   watchon = true;
+  typingon = true;
   displayresult.classList.add("hidden");
   typecontent.replaceChildren();
   next.blur();

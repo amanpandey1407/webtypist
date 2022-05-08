@@ -52,10 +52,10 @@ html {
 
 .cursorstyle {
   color: aliceblue;
-  height: 10%;
+  height: 1.8rem;
   border-right: 3px solid;
   animation: blink 0.5s step-end infinite alternate;
-  display: inline;
+  display: inline-block;
 }
 
 @keyframes blink {
@@ -172,7 +172,7 @@ html {
 .wrongletter {
   z-index: 2;
   font-size: 2rem;
-  color: #b20600;
+  color: #b22727;
   font-family: "Roboto", sans-serif;
   font-weight: 1000;
   display: inline;
