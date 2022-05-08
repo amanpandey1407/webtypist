@@ -201,6 +201,7 @@ var next = document.getElementById("nextbtn");
 var footer = document.getElementsByClassName("footer");
 var displayresult = document.getElementById("displayresult");
 var speeddisplay = document.getElementById("speed");
+var errorworddisplay = document.getElementById("errorword");
 var recorddisplay = document.getElementById("highestrecord");
 var cursor = document.createElement("SPAN");
 var typecontent = document.querySelector(".typecontent");
@@ -251,17 +252,7 @@ document.addEventListener("keydown", function (e) {
       timer.style.color = "black";
       timer.style.fontSize = "50px";
       timer.style.backgroundColor = "white";
-      displayresult.classList.remove("hidden");
-      currentrecord = Math.floor(i / 5 / Number((min * 60 + sec) / 60));
-      currentrecord < 0 ? (currentrecord = 0) : "";
-      speeddisplay.innerHTML = "Your Net Speed was " + currentrecord;
-
-      if (currentrecord > highestrecord) {
-        highestrecord = currentrecord;
-        localStorage.setItem("highest", highestrecord);
-      }
-
-      recorddisplay.innerHTML = "Highest Record is " + highestrecord;
+      resultdisplay();
     }
   }
 });
@@ -276,6 +267,7 @@ next.addEventListener("click", function () {
   words = 0;
   error = 0;
   errorchar = 0;
+  errorword = 0;
   sentencegeneration();
   wordcount.innerHTML = 0;
   (length = textcontent.length), (typingtext.innerHTML = String(textcontent));
@@ -368,3 +360,19 @@ theme.addEventListener("click", function () {
 
 if (daytheme == true) theme_day();
 else theme_night();
+
+function resultdisplay() {
+  displayresult.classList.remove("hidden");
+  currentrecord = Math.floor(i / 5 / Number((min * 60 + sec) / 60));
+  currentrecord < 0 ? (currentrecord = 0) : "";
+  speeddisplay.innerHTML = "Your Net Speed was " + currentrecord;
+
+  errorworddisplay.innerHTML = "Error word " + errorword;
+
+  if (currentrecord > highestrecord) {
+    highestrecord = currentrecord;
+    localStorage.setItem("highest", highestrecord);
+  }
+
+  recorddisplay.innerHTML = "Highest Record is " + highestrecord;
+}
