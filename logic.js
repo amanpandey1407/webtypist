@@ -274,7 +274,7 @@ next.addEventListener("click", function () {
   resetTimer();
   completed = false;
   timer.style.color = "white";
-  if (daytheme == true) timer.style.backgroundColor = "#4F8A8B";
+  if (daytheme == true) timer.style.backgroundColor = "#493323";
   else timer.style.backgroundColor = "#041C32";
   watchon = true;
   typingon = true;
@@ -297,12 +297,12 @@ document.onmousemove = function () {
 
 function theme_day() {
   document.getElementsByClassName("header")[0].style.backgroundColor =
-    "#4F8A8B";
+    "#493323";
   document.getElementsByClassName("title")[0].style.color = "#F4F6FF";
   document.getElementsByClassName("timer")[0].style.color = "#F4F6FF";
   document.getElementsByClassName("typingsection")[0].style.backgroundColor =
-    "#4F8A8B";
-  document.getElementsByClassName("eyes")[0].style.backgroundColor = "#4F8A8B";
+    "#493323";
+  document.getElementsByClassName("eyes")[0].style.backgroundColor = "#493323";
   document.querySelectorAll(".btn").forEach((btn) => {
     btn.style.backgroundColor = "#F4F6FF";
     btn.style.color = "black";
@@ -310,9 +310,9 @@ function theme_day() {
 
   document.getElementsByClassName("btn")[1].innerHTML = "Day";
   document.getElementsByClassName("btn")[1].blur();
-  typingtext.style.color = "#FDEFF4";
-  footer[0].style.backgroundColor = "#07031A";
-  timer.style.backgroundColor = "#4F8A8B";
+  typingtext.style.color = "#D1D1D1";
+  footer[0].style.backgroundColor = "#915B4A";
+  timer.style.backgroundColor = "#493323";
 
   if (completed == true) {
     timer.style.color = "black";
@@ -336,7 +336,7 @@ function theme_night() {
 
   document.getElementsByClassName("btn")[1].innerHTML = "Night";
   document.getElementsByClassName("btn")[1].blur();
-  typingtext.style.color = "white";
+  typingtext.style.color = "#C8C6C6";
   footer[0].style.backgroundColor = "#04293A";
   timer.style.backgroundColor = "#041C32";
 
