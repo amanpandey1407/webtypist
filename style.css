@@ -43,16 +43,15 @@ html {
 .typingcontent {
   font-size: 2rem;
   position: absolute;
-  /* margin-top: 20%;
-  margin-left: 2%; */
   opacity: 0.7;
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .cursorstyle {
+  border-radius: 10px;
   color: aliceblue;
-  height: 1.8rem;
+  height: 1.9rem;
   border-right: 3px solid;
   animation: blink 0.5s step-end infinite alternate;
   display: inline-block;
@@ -165,7 +164,7 @@ html {
   font-size: 2rem;
   color: #fbd46d;
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   display: inline;
 }
 
@@ -174,7 +173,7 @@ html {
   font-size: 2rem;
   color: #b91646;
   font-family: "Roboto", sans-serif;
-  font-weight: 1000;
+  font-weight: 500;
   display: inline;
   text-decoration: underline;
 }

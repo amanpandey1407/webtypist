@@ -207,6 +207,7 @@ var cursor = document.createElement("SPAN");
 var typecontent = document.querySelector(".typecontent");
 cursor.classList.add("cursorstyle");
 typingtext.innerHTML = String(textcontent);
+typecontent.appendChild(cursor);
 
 document.addEventListener("keydown", function (e) {
   if (typingon == true) {
