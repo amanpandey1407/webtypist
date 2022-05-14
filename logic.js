@@ -193,6 +193,7 @@ let result = "",
   errorword = 0,
   errorchar = 0,
   typingon = true,
+  audiotrack = 0,
   error = 0;
 var typingtext = document.getElementById("typingtext");
 var wordcount = document.getElementById("wordcount");
@@ -205,12 +206,39 @@ var errorworddisplay = document.getElementById("errorword");
 var recorddisplay = document.getElementById("highestrecord");
 var cursor = document.createElement("SPAN");
 var typecontent = document.querySelector(".typecontent");
+const audio1 = new Audio("typingsound/click4_1.wav");
+const audio2 = new Audio("typingsound/click4_2.wav");
+const audio3 = new Audio("typingsound/click4_3.wav");
+const audio4 = new Audio("typingsound/click4_4.wav");
+const audio5 = new Audio("typingsound/click4_5.wav");
+const audio6 = new Audio("typingsound/click4_6.wav");
+const audio7 = new Audio("typingsound/click4_11.wav");
+const audio8 = new Audio("typingsound/click4_22.wav");
+const audio9 = new Audio("typingsound/click4_33.wav");
+const audio10 = new Audio("typingsound/click4_44.wav");
+const audio11 = new Audio("typingsound/click4_55.wav");
+const audio12 = new Audio("typingsound/click4_66.wav");
+const audiofile = [
+  audio1,
+  audio2,
+  audio3,
+  audio4,
+  audio5,
+  audio6,
+  audio7,
+  audio8,
+  audio9,
+  audio10,
+  audio11,
+  audio12,
+];
 cursor.classList.add("cursorstyle");
 typingtext.innerHTML = String(textcontent);
 typecontent.appendChild(cursor);
 
 document.addEventListener("keydown", function (e) {
   if (typingon == true) {
+    keyboardsound();
     if (watchon == true) {
       startTimer();
     }
@@ -376,4 +404,9 @@ function resultdisplay() {
   }
 
   recorddisplay.innerHTML = "Highest Record is " + highestrecord;
+}
+
+function keyboardsound() {
+  audiofile[audiotrack++].play();
+  if (audiotrack == 12) audiotrack = 0;
 }
