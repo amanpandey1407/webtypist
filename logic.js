@@ -194,7 +194,8 @@ let result = "",
   errorchar = 0,
   typingon = true,
   audiotrack = 0,
-  error = 0;
+  error = 0,
+  wordlenset = 30;
 var typingtext = document.getElementById("typingtext");
 var wordcount = document.getElementById("wordcount");
 var theme = document.getElementById("themechange");
@@ -204,6 +205,7 @@ var displayresult = document.getElementById("displayresult");
 var speeddisplay = document.getElementById("speed");
 var errorworddisplay = document.getElementById("errorword");
 var recorddisplay = document.getElementById("highestrecord");
+var changewordlength = document.getElementById("wordlength");
 var cursor = document.createElement("SPAN");
 var typecontent = document.querySelector(".typecontent");
 const audio1 = new Audio("typingsound/click4_1.wav");
@@ -286,7 +288,9 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-next.addEventListener("click", function () {
+next.addEventListener("click", newsentence);
+
+function newsentence() {
   (textcontent = ""),
     (result = ""),
     (typed = ""),
@@ -310,7 +314,7 @@ next.addEventListener("click", function () {
   displayresult.classList.add("hidden");
   typecontent.replaceChildren();
   next.blur();
-});
+}
 
 var balls = document.getElementsByClassName("ball");
 document.onmousemove = function () {
@@ -409,4 +413,17 @@ function resultdisplay() {
 function keyboardsound() {
   audiofile[audiotrack++].play();
   if (audiotrack == 12) audiotrack = 0;
+}
+
+changewordlength.onchange = function () {
+  setwordlength();
+  changewordlength.blur();
+};
+
+function setwordlength() {
+  wordlenset = changewordlength.options[changewordlength.selectedIndex].text;
+  console.log(wordlenset);
+  console.log();
+  sentencesize = wordlenset;
+  newsentence();
 }
