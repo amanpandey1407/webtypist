@@ -150,7 +150,6 @@ html {
 }
 
 .displayresult {
-  background-color: #ff8c32;
   position: absolute;
   z-index: 3;
   width: 60%;
@@ -159,16 +158,19 @@ html {
   margin-top: 10%;
   border-radius: 10rem;
   text-align: center;
-
-  animation: stoe 3s infinite alternate;
+  animation: stoe 15s infinite;
 }
 
 @keyframes stoe {
-  from {
-    background-color: #56bbf1;
+  0% {
+    background: #56bbf1;
   }
-  to {
-    background-color: #00afc1;
+
+  50% {
+    background: #ce49bf;
+  }
+  100% {
+    background: #56bbf1;
   }
 }
 
