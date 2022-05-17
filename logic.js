@@ -1,93 +1,6 @@
 "use strict";
 
-let randomwords = [
-  `you`,
-  `hear`,
-  `great`,
-  `answer`,
-  `come`,
-  `large`,
-  `does`,
-  `write`,
-  `child`,
-  `like`,
-  `began`,
-  `near`,
-  `why`,
-  `run`,
-  `know`,
-  `what`,
-  `are`,
-  `group`,
-  `place`,
-  `work`,
-  `plant`,
-  `want`,
-  `father`,
-  `would`,
-  `for`,
-  `first`,
-  `might`,
-  `there`,
-  `took`,
-  `far`,
-  `only`,
-  `thought`,
-  `good`,
-  `below`,
-  `under`,
-  `put`,
-  `old`,
-  `live`,
-  `often`,
-  `food`,
-  `left`,
-  `year`,
-  `way`,
-  `paper`,
-  `around`,
-  `home`,
-  `such`,
-  `many`,
-  `use`,
-  `was`,
-  `him`,
-  `but`,
-  `out`,
-  `over`,
-  `later`,
-  `big`,
-  `city`,
-  `have`,
-  `into`,
-  `our`,
-  `fall`,
-  `saw`,
-  `family`,
-  `hard`,
-  `before`,
-  `few`,
-  `very`,
-  `eye`,
-  `sun`,
-  `little`,
-  `some`,
-  `our`,
-  `high`,
-  `face`,
-  `next`,
-  `set`,
-  `same`,
-  "here",
-  "what",
-  "now",
-  "health",
-  "the",
-  "leave",
-  "gift",
-  "wealth",
-  "best",
-];
+import randomwords from "./randomwords.js";
 
 if (localStorage.getItem("highest") === null) {
   localStorage.setItem("highest", 0);
@@ -118,63 +31,63 @@ sentencegeneration();
 const timer = document.getElementById("stopwatch");
 
 let watchon = true;
-var hr = 0;
-var min = 0;
-var sec = 0;
-var stoptime = true;
+var minutes = 0;
+var seconds = 0;
+var tens = 0;
+var appendTens = document.getElementById("tens");
+var appendSeconds = document.getElementById("seconds");
+var appendMinutes = document.getElementById("minutes");
+
+var Interval;
 
 function startTimer() {
-  if (stoptime == true) {
-    stoptime = false;
-    timerCycle();
-  }
+  clearInterval(Interval);
+  Interval = setInterval(Timerstart, 10);
 }
+
 function stopTimer() {
-  if (stoptime == false) {
-    stoptime = true;
-  }
-}
-
-function timerCycle() {
-  if (stoptime == false) {
-    sec = parseInt(sec);
-    min = parseInt(min);
-    hr = parseInt(hr);
-
-    sec = sec + 1;
-
-    if (sec == 60) {
-      min = min + 1;
-      sec = 0;
-    }
-    if (min == 60) {
-      hr = hr + 1;
-      min = 0;
-      sec = 0;
-    }
-
-    if (sec < 10 || sec == 0) {
-      sec = "0" + sec;
-    }
-    if (min < 10 || min == 0) {
-      min = "0" + min;
-    }
-    if (hr < 10 || hr == 0) {
-      hr = "0" + hr;
-    }
-
-    timer.innerHTML = hr + ":" + min + ":" + sec;
-
-    setTimeout("timerCycle()", 1000);
-  }
+  clearInterval(Interval);
 }
 
 function resetTimer() {
-  timer.innerHTML = "00:00:00";
-  stoptime = true;
-  hr = 0;
-  sec = 0;
-  min = 0;
+  clearInterval(Interval);
+  tens = "00";
+  seconds = "00";
+  minutes = "00";
+  appendTens.innerHTML = tens;
+  appendSeconds.innerHTML = seconds;
+  appendMinutes.innerHTML = minutes;
+}
+
+function Timerstart() {
+  tens++;
+
+  if (tens <= 9) {
+    appendTens.innerHTML = "0" + tens;
+  }
+
+  if (tens > 9) {
+    appendTens.innerHTML = tens;
+  }
+
+  if (tens > 99) {
+    seconds++;
+    appendSeconds.innerHTML = "0" + seconds;
+    tens = 0;
+    appendTens.innerHTML = "0" + 0;
+  }
+
+  if (seconds > 9) {
+    appendSeconds.innerHTML = seconds;
+  }
+  if (seconds > 59) {
+    minutes++;
+    appendMinutes.innerHTML = "0" + minutes;
+    seconds = 0;
+    tens = 0;
+    appendSeconds.innerHTML = "0" + seconds;
+    appendTens.innerHTML = "0" + 0;
+  }
 }
 
 let i = 0,
@@ -396,7 +309,7 @@ else theme_night();
 
 function resultdisplay() {
   displayresult.classList.remove("hidden");
-  currentrecord = Math.floor(i / 5 / Number((min * 60 + sec) / 60));
+  currentrecord = Math.floor(i / 5 / Number((minutes * 60 + seconds) / 60));
   currentrecord < 0 ? (currentrecord = 0) : "";
   speeddisplay.innerHTML = "Your Net Speed was " + currentrecord;
 
@@ -412,7 +325,7 @@ function resultdisplay() {
 
 function keyboardsound() {
   audiofile[audiotrack++].play();
-  if (audiotrack == 12) audiotrack = 0;
+  if (audiotrack == audiofile.length) audiotrack = 0;
 }
 
 changewordlength.onchange = function () {
@@ -422,8 +335,6 @@ changewordlength.onchange = function () {
 
 function setwordlength() {
   wordlenset = changewordlength.options[changewordlength.selectedIndex].text;
-  console.log(wordlenset);
-  console.log();
   sentencesize = wordlenset;
   newsentence();
 }

@@ -67,7 +67,12 @@
           <div class="ball"></div>
         </div>
       </div>
-      <div id="stopwatch" class="timer">00:00:00</div>
+      <div id="stopwatch" class="timer">
+        <span id="minutes">00</span>:<span id="seconds">00</span>:<span
+          id="tens"
+          >00</span
+        >
+      </div>
     </section>
     <section class="typingsection">
       <div id="displayresult" class="displayresult hidden">
@@ -104,6 +109,7 @@
       </p>
     </div>
 
-    <script src="logic.js"></script>
+    <script type="module" src="logic.js"></script>
+    <script type="module" src="randomwords.js"></script>
   </body>
 </html>
