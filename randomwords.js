@@ -1,4 +1,4 @@
-const randomwords = [
+export const randomwords = [
   `you`,
   `hear`,
   `great`,
@@ -86,5 +86,3 @@ const randomwords = [
   "wealth",
   "best",
 ];
-
-export default randomwords;
