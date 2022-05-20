@@ -2,6 +2,13 @@
 
 import { randomwords } from "./randomwords.js";
 import { audiofile } from "./keyboardsound.js";
+import {
+  startTimer,
+  stopTimer,
+  resetTimer,
+  minutes,
+  seconds,
+} from "./timer.js";
 
 if (localStorage.getItem("highest") === null) {
   localStorage.setItem("highest", 0);
@@ -29,67 +36,8 @@ function sentencegeneration() {
 
 sentencegeneration();
 
-const timer = document.getElementById("stopwatch");
-
 let watchon = true;
-var minutes = 0;
-var seconds = 0;
-var tens = 0;
-var appendTens = document.getElementById("tens");
-var appendSeconds = document.getElementById("seconds");
-var appendMinutes = document.getElementById("minutes");
-
-var Interval;
-
-function startTimer() {
-  clearInterval(Interval);
-  Interval = setInterval(Timerstart, 10);
-}
-
-function stopTimer() {
-  clearInterval(Interval);
-}
-
-function resetTimer() {
-  clearInterval(Interval);
-  tens = "00";
-  seconds = "00";
-  minutes = "00";
-  appendTens.innerHTML = tens;
-  appendSeconds.innerHTML = seconds;
-  appendMinutes.innerHTML = minutes;
-}
-
-function Timerstart() {
-  tens++;
-
-  if (tens <= 9) {
-    appendTens.innerHTML = "0" + tens;
-  }
-
-  if (tens > 9) {
-    appendTens.innerHTML = tens;
-  }
-
-  if (tens > 99) {
-    seconds++;
-    appendSeconds.innerHTML = "0" + seconds;
-    tens = 0;
-    appendTens.innerHTML = "0" + 0;
-  }
-
-  if (seconds > 9) {
-    appendSeconds.innerHTML = seconds;
-  }
-  if (seconds > 59) {
-    minutes++;
-    appendMinutes.innerHTML = "0" + minutes;
-    seconds = 0;
-    tens = 0;
-    appendSeconds.innerHTML = "0" + seconds;
-    appendTens.innerHTML = "0" + 0;
-  }
-}
+const timer = document.getElementById("stopwatch");
 
 let i = 0,
   j = 0;
@@ -167,6 +115,8 @@ document.addEventListener("keydown", function (e) {
 
     if (length == i) {
       stopTimer();
+      if (error == 0) correctword++;
+      else errorword++;
       watchon = false;
       typingon = false;
       completed = true;
@@ -291,7 +241,7 @@ function resultdisplay() {
   currentrecord < 0 ? (currentrecord = 0) : "";
   speeddisplay.innerHTML = "Your Net Speed was " + currentrecord;
 
-  errorworddisplay.innerHTML = "Error word " + errorword;
+  errorworddisplay.innerHTML = "Error words " + errorword;
 
   if (currentrecord > highestrecord) {
     highestrecord = currentrecord;
